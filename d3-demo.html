@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>d3.chart.sankey (product demo)</title>
+    <script src="d3.min.js"></script>
+    <script src="d3.chart.min.js"></script>
+    <script src="d3.chart.sankey.js"></script>
+    <style>
+      body {
+        padding: 10px;
+        min-width: 600px;
+        max-width: 1200px;
+        margin: auto;
+      }
+      #chart {
+        height: 500px;
+        font: 13px sans-serif;
+      }
+      .node rect {
+        fill-opacity: .9;
+        shape-rendering: crispEdges;
+        stroke-width: 0;
+      }
+      .node text {
+        text-shadow: 0 1px 0 #fff;
+      }
+      .link {
+        fill: none;
+        stroke: #000;
+        stroke-opacity: .2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart"></div>
+
+    <script>
+      var colors = {
+            'environment':         '#edbd00',
+            'social':              '#367d85',//#367D85
+            'animals':             '#edbd00',
+            'health':              '#edbd00',
+            'research_ingredient': '#edbd00',
+            'fallback':            '#edbd00',
+            'land':                 '#edbd00',
+            'research':              '#edbd00',
+          };
+      d3.json("1.json", function(error, json) {
+        var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
+        chart
+          .name(label)
+          .colorNodes(function(name, node) {
+            return color(node, 1) || colors.fallback;
+          })
+          .colorLinks(function(link) {
+            return color(link.source, 4) || color(link.target, 1) || colors.fallback;
+          })
+          .nodeWidth(15)// 节点宽度
+          .nodePadding(10) //节点间距
+          .spread(true) //分割
+          .iterations(0)
+        var data = json;
+        for (var i = 0; i <data.nodes.length; i++) {
+          if(!data.nodes[i].isnot){
+            data.nodes.splice(i,1);
+            --i;
+          }
+        }
+        for (var i = 0; i <data.links.length; i++) {
+          if(!data.links[i].isnot){
+            data.links.splice(i,1);
+            --i;
+          }
+        }
+          chart.draw(data); // 绘制
+        function label(node) {
+          if(node.isnot)
+          return node.name.replace(/\s*\(.*?\)$/, '');
+        }
+        function color(node, depth) {
+          var id = node.id.replace(/(_score)?(_\d+)?$/, '');
+          if (colors[id]) {
+            return colors[id];
+          } else if (depth > 0 && node.targetLinks && node.targetLinks.length == 1) {
+            return color(node.targetLinks[0].source, depth-1);
+          } else {
+            return null;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

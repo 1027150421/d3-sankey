@@ -1,0 +1,168 @@
+{
+  "nodes" : [
+    {
+      "name" : "Total",
+      "id" : "final_score",
+      "type" : 0,
+      "isnot":true
+    },
+    {
+      "name" : "Environment",
+      "id" : "environment_score",
+      "type" : 1,
+      "isnot":false
+    },
+    {
+      "name" : "Land use",
+      "id" : "land_use_score",
+      "type" : 2,
+      "isnot":true
+    },
+    {
+      "id" : "research_ingredient_177",
+      "name" : "Cocoa butter (Organic)",
+      "type" : 3,
+      "isnot":true
+    },
+    {
+      "name" : "Cocoa mass (Organic)",
+      "id" : "research_ingredient_190",
+      "type" : 3,
+      "isnot":true
+    },
+    {
+      "name" : "Hazelnuts (Organic)",
+      "id" : "research_ingredient_228",
+      "type" : 3,
+      "isnot":true
+    },
+    {
+      "name" : "Cane sugar (Organic)",
+      "id" : "research_ingredient_283",
+      "type" : 3,
+      "isnot":true
+    },
+    {
+      "name" : "Cane sugar (Organic)",
+      "id" : "research_ingredient_284",
+      "type" : 2,
+      "isnot":true
+    },
+    {
+      "id" : "social_score",
+      "name" : "Human rights",
+      "type" : 1,
+      "isnot":true
+    },
+    {
+      "name" : "Child labour",
+      "id" : "child_score",
+      "type" : 2,
+      "isnot":true
+    },
+    {
+      "id" : "research_ingredient_238",
+      "name" : "Coconut oil (Organic)",
+      "type" : 3,
+      "isnot":true
+    },
+    {
+      "id" : "research_ingredient_239",
+      "name" : "oil (Organic)",
+      "type" : 3,
+      "isnot":true
+    }
+  ],
+  "links" : [
+    {
+      "source" : "final_score",
+      "value" : 0.302284047256003,
+      "target" : "environment_score",
+      "isnot":false
+    },
+    {
+      "value" : 0.24322870366987,
+      "source" : "environment_score",
+      "target" : "land_use_score",
+      "isnot":false
+    },
+    {
+      "value" : 0.107682517071359,
+      "source" : "land_use_score",
+      "target" : "research_ingredient_177",
+      "isnot":true
+    },
+    {
+      "value" : 0.087241325342711,
+      "source" : "land_use_score",
+      "target" : "research_ingredient_190",
+      "isnot":true
+    },
+    {
+      "source" : "land_use_score",
+      "value" : 0.02433076373512774,
+      "target" : "research_ingredient_228",
+      "isnot":true
+    },
+    {
+      "target" : "research_ingredient_283",
+      "value" : 0.02296956039863467,
+      "source" : "land_use_score",
+      "isnot":true
+    },
+    {
+      "target" : "research_ingredient_284",
+      "value" : 0.057574096993239,
+      "source" : "environment_score",
+      "isnot":false
+    },
+    {
+      "target" : "research_ingredient_228",
+      "value" : 0.027574096993239,
+      "source" : "research_ingredient_284",
+      "isnot":true
+    },
+    {
+      "target" : "research_ingredient_283",
+      "value" : 0.027574096993239,
+      "source" : "research_ingredient_284",
+      "isnot":true
+    },
+    {
+      "target" : "social_score",
+      "value" : 0.127574096993239,
+      "source" : "final_score",
+      "isnot":true
+    },
+    {
+      "target" : "child_score",
+      "value" : 0.127574096993239,
+      "source" : "social_score",
+      "isnot":true
+    },
+    {
+      "source" : "child_score",
+      "value" :0.067574096993239,
+      "target" : "research_ingredient_238",
+      "isnot":true
+    },
+    {
+      "source" : "child_score",
+      "value" :0.061574096993239,
+      "target" : "research_ingredient_239",
+      "isnot":true
+    },
+    {
+      "source" : "final_score",
+      "value" :0.24574096993239,
+      "target" : "land_use_score",
+      "isnot" : true
+    },
+    {
+      "source" : "final_score",
+      "value" :0.061574096993239,
+      "target" : "research_ingredient_284",
+      "isnot" : true
+    }
+  ]
+}
